@@ -21,7 +21,7 @@ daemons() {
     picom --experimental-backends >> /dev/null 2>&1 & # 开启picom
 }
 
-tbg $DWM/wallpaper -m 8 & 
+tbg /home/men/file/system/config/wallpaper -m 8 & 
 cron() {
     [ $1 ] && sleep $1
     let i=10

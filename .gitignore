@@ -1,0 +1,11 @@
+autostart.sh
+statusbar/
+result/
+scripts/
+dwm
+*.o
+.ccls-cache/
+compile_commands.json
+.cache
+statusbar/temp
+DEF/statusbar/temp
