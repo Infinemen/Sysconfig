@@ -8,7 +8,7 @@ _thisdir=$(cd $(dirname $0);pwd)
 settings() {
     [ $1 ] && sleep $1
     xset -b                                   # 关闭蜂鸣器
-    syndaemon -i 1 -t -K -R -d                # 设置使用键盘时触控板短暂失效
+#    syndaemon -i 1 -t -K -R -d                # 设置使用键盘时触控板短暂失效
 #    ~/scripts/set_screen.sh two               # 设置显示器
 }
 
@@ -21,7 +21,7 @@ daemons() {
     picom --experimental-backends >> /dev/null 2>&1 & # 开启picom
 }
 
-tbg /home/men/file/system/config/wallpaper -m 8 & 
+tbg /home/men/.config/dwm/wallpaper -m 8 & 
 cron() {
     [ $1 ] && sleep $1
     let i=10
@@ -31,6 +31,6 @@ cron() {
     done
 }
 
-settings 1 &                                  # 初始化设置项
+#settings 1 &                                  # 初始化设置项
 daemons 3 &                                   # 后台程序项
-cron 5 &                                      # 定时任务项
+#cron 5 &                                      # 定时任务项

@@ -1,7 +1,7 @@
 ## System Config
 - folder copying
-    - Setting $DWM=$home/file/system/dwm in .zprofile
-    - cp statusbar and scripts dwm folder
+    - Setting $DWM=$home/men/.config/dwm in .zprofile
+    - cp statusbar wallpaper and scripts to .config/dwm folder
 - file copying
-    - cp autostart.sh to dwm folder
+    - cp autostart.sh to .config/dwm folder
     - cp config.h to dwm folder
