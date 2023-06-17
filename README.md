@@ -1,7 +1,78 @@
 ## System Config
-- folder copying
-    - Setting $DWM=$home/men/.config/dwm in .zprofile
-    - cp statusbar wallpaper and scripts to .config/dwm folder
-- file copying
-    - cp autostart.sh to .config/dwm folder
-    - cp config.h to dwm folder
+- Setting
+    - folder copying
+        - Setting $DWM=$home/men/.config/dwm in .zprofile
+        - cp statusbar wallpaper and scripts to .config/dwm folder
+    - file copying
+        - cp autostart.sh to .config/dwm folder
+        - cp config.h to dwm folder
+
+- Install System
+    - Network
+        - ip a
+        - iwctl
+    - Storage
+        - lsblk
+        - gdisk /dev/sda
+            - +300M ef00   EFI
+        - lsblk double check
+        - mkfs.fat -F32 /dev/sda1
+        - mkfs.btrfs /dev/sda2
+        - mount /dev/sda2 /mnt
+        - cd /mnt
+        - btrfs subvolume create @
+        - btrfs subvolume create @home
+        - cd
+        - umount /mnt
+        - mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ /dev/sda2 /mnt
+        - mkdir /mnt/{boot,home}
+        - mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home /dev/sda2 /mnt/home
+        - mount /dev/sda1 /mnt/boot
+        - lsblk
+    - System
+        - pacstrap /mnt base linux linux-firmware vim git amd-ucode
+        - genfstab -U /mnt >> /mnt/etc/fstab
+        - arch-chroot /mnt
+        - git clone https://gitlab.com/eflinux/arch-install-base
+        - mkinitcpio -p linux
+        - exit
+        - umount -R /mnt
+        - reboot
+    - Software
+        - xorg
+        - dwm
+            - btop
+            - flameshot
+            - dunst
+            - picom-jonaburg-git
+            - tbg
+            - curl
+            - pipewire
+            - pulseaudio
+            - nmcli
+            - betterscreenlock
+            - bluez ??
+            - fzf
+        - st
+        - amdgpu-pro-libgl
+        - amf-amdgpu-pro
+        - vulkan-amdgpu-pro
+        - vulkan-radeon
+        - Zotero
+        - fcitx5
+            - rime
+        - microsoft-edge
+        - dmenu
+        - v2raya
+        - masterpdfeditor
+        - lf
+        - linuxQQ
+        - logseq
+        - neovim
+        - zsh
+        - paru
+        - fonts
+            - ttf-dejavu-emojiless
+            - ttf-inconsolata-nerd
+            - ttf-joypixels
+            - ttf-ubuntu-mono-nerd
