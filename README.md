@@ -42,18 +42,18 @@
         - xorg
         - dwm
             - btop
+            - acpi
             - flameshot
-            - dunst
+            - dunst-git
             - picom-jonaburg-git
             - tbg
             - curl
             - pipewire
-            - pulseaudio
+            - pipewire-pulse
             - nmcli
             - betterscreenlock
             - bluez ??
             - fzf
-        - st
         - amdgpu-pro-libgl
         - amf-amdgpu-pro
         - vulkan-amdgpu-pro
@@ -61,8 +61,8 @@
         - Zotero
         - fcitx5
             - rime
-        - microsoft-edge
-        - dmenu
+        - microsoft-edge-stable
+        - rofi
         - v2raya
         - masterpdfeditor
         - lf
@@ -75,4 +75,11 @@
             - ttf-dejavu-emojiless
             - ttf-inconsolata-nerd
             - ttf-joypixels
+            - ttf-material-design-icons-git
             - ttf-ubuntu-mono-nerd
+- System Setup
+    -flypy double pinyin
+        - download flypy for macos
+        - copy rime/build files to .local/share/fcitx5/rime/build/
+        - copy rime/{flypy_user.txt flypy.shema.yaml} .local/share/fcitx5/rime
+        - deploy
