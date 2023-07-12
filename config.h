@@ -5,8 +5,7 @@ static const int newclientathead         = 0;         /* 定义新窗口在栈�
 static const unsigned int borderpx       = 2;         /* 窗口边框大小 */
 static const unsigned int systraypinning = 1;         /* 托盘跟随的显示器 0代表不指定显示器 */
 static const unsigned int systrayspacing = 1;         /* 托盘间距 */
-static const unsigned int systrayspadding = 5;        /* 托盘和状态栏的间隙 */
-static int gappi                         = 12;        /* 窗口与窗口 缝隙大小 */
+static const unsigned int systrayspadding = 5;        /* 托盘和状态栏的间隙 */ static int gappi                         = 12;        /* 窗口与窗口 缝隙大小 */
 static int gappo                         = 12;        /* 窗口与边缘 缝隙大小 */
 static const int _gappo                  = 12;        /* 窗口与窗口 缝隙大小 不可变 用于恢复时的默认值 */
 static const int _gappi                  = 12;        /* 窗口与边缘 缝隙大小 不可变 用于恢复时的默认值 */
@@ -21,7 +20,8 @@ static const int   nmaster               = 1;         /* 主工作区 窗口数�
 static const unsigned int snap           = 10;        /* 边缘依附宽度 */
 static const unsigned int baralpha       = 0xc0;      /* 状态栏透明度 */
 static const unsigned int borderalpha    = 0xdd;      /* 边框透明度 */
-static const char *fonts[]               = { "DejaVu Sans Light:style=ExtraLight:size=16", "UbuntuMono Nerd Font:style=Regular:size=16", "JoyPixels:style=Regular:pixelsize=18:antialias=true:autohint=true" };
+static const char *fonts[]               = { "DejaVu Sans Light:style=ExtraLight:size=18", "JoyPixels:style=Regular:pixelsize=18:antialias=true:autohint=true" };
+//static const char *fonts[]               = { "JetBrainsMono Nerd Font:style=Regular:pixelsize=18:antialias=true:autohint=true" };
 static const char *colors[][3]           = {          /* 颜色设置 ColFg, ColBg, ColBorder */ 
     [SchemeNorm] = { "#bbbbbb", "#333333", "#444444" },
     [SchemeSel] = { "#ffffff", "#37474F", "#42A5F5" },
@@ -104,8 +104,8 @@ static const Layout overviewlayout = { "舘",  overview };
 
 /* 自定义布局 */
 static const Layout layouts[] = {
-    { "﬿",  tile },         /* 主次栈 */
-    { "󰝘",  magicgrid },    /* 网格 */
+    { "",  tile },         /* 主次栈 */
+    { "",  magicgrid },    /* 网格 */
 };
 
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
