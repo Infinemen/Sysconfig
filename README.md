@@ -30,10 +30,10 @@
         - mount /dev/sda1 /mnt/boot
         - lsblk
     - System
-        - pacstrap /mnt base linux linux-firmware vim git amd-ucode
+        - pacstrap /mnt base base-devel linux linux-firmware btrfs-progs vim git amd-ucode networkmanager zsh zsh-completions sudo
         - genfstab -U /mnt >> /mnt/etc/fstab
         - arch-chroot /mnt
-        - git clone https://gitlab.com/eflinux/arch-install-base
+        - git clone https://gitlab.com/eflinux/arch-install-base 并运行     
         - mkinitcpio -p linux
         - exit
         - umount -R /mnt
