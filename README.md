@@ -1,85 +1,51 @@
-## System Config
-- Setting
-    - folder copying
-        - Setting $DWM=$home/men/.config/dwm in .zprofile
-        - cp statusbar wallpaper and scripts to .config/dwm folder
-    - file copying
-        - cp autostart.sh to .config/dwm folder
-        - cp config.h to dwm folder
+# Arch Linux Hyprland 一键配置脚本
 
-- Install System
-    - Network
-        - ip a
-        - iwctl
-    - Storage
-        - lsblk
-        - gdisk /dev/sda
-            - +300M ef00   EFI
-        - lsblk double check
-        - mkfs.fat -F32 /dev/sda1
-        - mkfs.btrfs /dev/sda2
-        - mount /dev/sda2 /mnt
-        - cd /mnt
-        - btrfs subvolume create @
-        - btrfs subvolume create @home
-        - cd
-        - umount /mnt
-        - mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ /dev/sda2 /mnt
-        - mkdir /mnt/{boot,home}
-        - mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home /dev/sda2 /mnt/home
-        - mount /dev/sda1 /mnt/boot
-        - lsblk
-    - System
-        - pacstrap /mnt base base-devel linux linux-firmware btrfs-progs vim git amd-ucode networkmanager zsh zsh-completions sudo
-        - genfstab -U /mnt >> /mnt/etc/fstab
-        - arch-chroot /mnt
-        - git clone https://gitlab.com/eflinux/arch-install-base 并运行     
-        - mkinitcpio -p linux
-        - exit
-        - umount -R /mnt
-        - reboot
-    - Software
-        - xorg
-        - dwm
-            - btop
-            - acpi
-            - flameshot
-            - dunst-git
-            - picom-jonaburg-git
-            - tbg
-            - curl
-            - pipewire
-            - pipewire-pulse
-            - nmcli
-            - betterscreenlock
-            - bluez ??
-            - fzf
-        - amdgpu-pro-libgl
-        - amf-amdgpu-pro
-        - vulkan-amdgpu-pro
-        - vulkan-radeon
-        - Zotero
-        - fcitx5
-            - rime
-        - microsoft-edge-stable
-        - rofi
-        - v2raya
-        - masterpdfeditor
-        - lf
-        - linuxQQ
-        - logseq
-        - neovim
-        - zsh
-        - paru
-        - fonts
-            - ttf-dejavu-emojiless
-            - ttf-inconsolata-nerd
-            - ttf-joypixels
-            - ttf-material-design-icons-git
-            - ttf-ubuntu-mono-nerd
-- System Setup
-    -flypy double pinyin
-        - download flypy for macos
-        - copy rime/build files to .local/share/fcitx5/rime/build/
-        - copy rime/{flypy_user.txt flypy.shema.yaml} .local/share/fcitx5/rime
-        - deploy
+[![Arch Linux](https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff)](https://archlinux.org/)
+[![Hyprland](https://img.shields.io/badge/Hyprland-0.56%2B-58E1FF)](https://hyprland.org/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+一个为 Arch Linux 打造的完整桌面环境配置脚本，基于 **Hyprland + Lua 配置**，集成终端、输入法、状态栏、文件管理器、风扇控制等一整套工具链，适合快速部署一台可用的 Wayland 桌面。
+
+## ✨ 包含内容
+
+| 类别 | 组件 | 说明 |
+|---|---|---|
+| 合成器 | **Hyprland** + uwsm | 使用 Lua 配置（`hyprland.lua`） |
+| 终端 | **Kitty** | JetBrainsMono Nerd Font |
+| 状态栏 | **Waybar**（AUR 的 `waybar-git`） | 修复 Hyprland 0.55+ 工作区点击问题 |
+| 通知 | **dunst** | |
+| 壁纸 | **hyprpaper** | |
+| 输入法 | **Fcitx5** + 小鹤双拼 | 深色主题 |
+| 文件管理器 | **Yazi**（终端） + **Dolphin**（图形） | Yazi 设为默认 `inode/directory` |
+| 编辑器 | **Neovim** | 基础剪贴板配置 |
+| 浏览器 | **Firefox** | |
+| Shell | **zsh** | zsh-autosuggestions + zoxide + fzf |
+| 音频 | **PipeWire** + **WirePlumber** + **pipewire-pulse** | 完整音频栈 |
+| 电源 | **power-profiles-daemon** | Waybar 电源模块依赖 |
+| 风扇 | **fan2go** + **nvidiactl** | 主板 PWM 控制 + NVIDIA 显卡风扇 |
+| 启动器 | **hyprlauncher**（AUR） | |
+| 字体 | Noto CJK / Nerd Fonts / Adobe Source Han | |
+
+## 📋 前置要求
+
+- **Arch Linux** 基础系统已安装（`base-devel`、能联网）
+- 有 `sudo` 权限的普通用户
+- 已安装 `git`
+- 桌面环境是 **Hyprland 0.56 或更高版本**（Lua 配置需要）
+- 如果使用 NVIDIA 显卡，已安装闭源驱动（`nvidia` / `nvidia-dkms`）
+
+## 🚀 快速开始
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/<yourname>/arch-hyprland-setup.git
+cd arch-hyprland-setup
+
+# 2. 赋予执行权限
+chmod +x arch-setup.sh
+
+# 3. 先试运行，看看会做什么（不改系统）
+./arch-setup.sh --dry-run
+
+# 4. 正式执行
+./arch-setup.sh
