@@ -154,7 +154,7 @@ install_packages() {
     info "安装官方仓库软件包..."
     sudo pacman -S --needed --noconfirm \
         base-devel git wget curl unzip reflector \
-        zsh zsh-autosuggestions \
+        zsh zsh-autosuggestions less \
         hyprland uwsm hyprpaper dunst wl-clipboard \
         kitty neovim dolphin firefox \
         fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-qt \
